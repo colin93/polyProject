@@ -7,12 +7,12 @@
 
 
 typedef struct {
-  int order;
+  int power;
   double coeffecient;
 }poly;
 
 typedef struct n {
-  poly a;
+  poly p;
   struct n *successor; 
 } llnode;
 

@@ -11,15 +11,15 @@
  */
 
 
-llist polyMultiply(llist *poly,double mult)
+llist polyMultiply(llist *polyn,double mult)
 {
   //Check if input llist is empty
-  if (poly->head->next == NULL){
+  if (polyn->head->next == NULL){
     printf("Supplied polynomial is empty");
-    return poly;
+    return polyn;
     }
   else{
-    llist result = poly; //Copy input poly to result
+    llist result = polyn; //Copy input poly to result may need to change this to do a malloc
     result->current = result->head->next; //Set current node to first node
     while (result->current != NULL){    //Stops when reaches tail
 
@@ -29,9 +29,9 @@ llist polyMultiply(llist *poly,double mult)
 	be coeffecient * mult
 	sets current node to next node in list
        */
-      if (result->current->coeff!=0)
+      if (result->current->poly.coeff!=0)
 	{
-	result->current->coeff=result->current->coeff*mult;
+	result->current->coeff=result->current->poly.coeff*mult;
 	result->current=result->current->next;
 	}
       else //sets current node to next node in list
@@ -42,12 +42,12 @@ llist polyMultiply(llist *poly,double mult)
   
 }
 
-llist polyDivide(llist *poly,double divide)
+llist polyDivide(llist *polyn,double divide)
 {
   if(divide!=0) //to stop divide by 0
     {
       double inv = 1.0/divide; //invert input
-      llist result = polyMultiply(&poly,inv); //perform multiply with inverse of input
+      llist result = polyMultiply(&polyn,inv); //perform multiply with inverse of input
     }
   else
     {
@@ -57,9 +57,9 @@ llist polyDivide(llist *poly,double divide)
   return result;
 }
 
-llist polyNormalise(llist *poly)
+llist polyNormalise(llist *polyn)
 {
-  double first = poly->head->next->coeff; //gets coeffecient of highest order term
-  llist result = polyDivide(&poly,first); //divides poly by that coeffecient
+  double first = polyn->head->next->poly.coeff; //gets coeffecient of highest order term
+  llist result = polyDivide(&polyn,first); //divides poly by that coeffecient
   return result;
 }

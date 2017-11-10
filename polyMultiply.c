@@ -29,9 +29,9 @@ llist polyMultiply(llist *polyn,double mult)
 	be coeffecient * mult
 	sets current node to next node in list
        */
-      if (result->current->poly.coeff!=0)
+      if (result->current->coeffecient!=0)
 	{
-	result->current->coeff=result->current->poly.coeff*mult;
+	result->current->coeffecient=(result->current->coeffecient)*mult;
 	result->current=result->current->next;
 	}
       else //sets current node to next node in list
@@ -59,7 +59,7 @@ llist polyDivide(llist *polyn,double divide)
 
 llist polyNormalise(llist *polyn)
 {
-  double first = polyn->head->next->poly.coeff; //gets coeffecient of highest order term
+  double first = polyn->head->next->coeffecient; //gets coeffecient of highest order term
   llist result = polyDivide(&polyn,first); //divides poly by that coeffecient
   return result;
 }

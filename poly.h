@@ -5,20 +5,15 @@
 //1) enumerator for errors
 //2) All other function declerations
 
-
-typedef struct {
-  int power;
-  double coeffecient;
-}poly;
-
 typedef struct n {
-  poly p;
+  int power;
+  double coeffecient
   struct n *successor; 
-} llnode;
+} polyFactor;
 
 typedef struct {
-  llnode *head;
-  llnode *current;
+  polyFactor *head;
+  polyFactor *current;
 } llist;
 
 llist polyMultiply(llist *poly,double mult);

@@ -11,7 +11,7 @@
  */
 
 
-llist polyMultiply(llist *polyn,double mult)
+llist *polyMultiply(llist *polyn,double mult)
 {
   //Check if input llist is empty
   if (polyn->head->next == NULL){
@@ -19,7 +19,7 @@ llist polyMultiply(llist *polyn,double mult)
     return polyn;
     }
   else{
-    llist result = polyn; //Copy input poly to result may need to change this to do a malloc
+    llist *result = copyPoly(polyn); //Copy input poly to result may need to change this to do a malloc
     result->current = result->head->next; //Set current node to first node
     while (result->current != NULL){    //Stops when reaches tail
 
@@ -42,24 +42,24 @@ llist polyMultiply(llist *polyn,double mult)
   
 }
 
-llist polyDivide(llist *polyn,double divide)
+llist *polyDivide(llist *polyn,double divide)
 {
   if(divide!=0) //to stop divide by 0
     {
       double inv = 1.0/divide; //invert input
-      llist result = polyMultiply(&polyn,inv); //perform multiply with inverse of input
+      llist *result = polyMultiply(polyn,inv); //perform multiply with inverse of input
     }
   else
     {
       printf("Can not divide by 0");
-      llist result = NULL;
+      llist *result = NULL;
     }
   return result;
 }
 
-llist polyNormalise(llist *polyn)
+llist *polyNormalise(llist *polyn)
 {
   double first = polyn->head->next->coeffecient; //gets coeffecient of highest order term
-  llist result = polyDivide(&polyn,first); //divides poly by that coeffecient
+  llist *result = polyDivide(polyn,first); //divides poly by that coeffecient
   return result;
 }

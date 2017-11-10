@@ -1,4 +1,4 @@
-#inlcude "poly.h"
+#include "poly.h"
 #include <stdlib.h>
 
 //Too add in checks for memory in creation of polyCopy and elementCopy.

@@ -8,7 +8,7 @@
 typedef struct n {
   int power;
   double coeffecient
-  struct n *successor; 
+  struct n *next; 
 } polyFactor;
 
 typedef struct {

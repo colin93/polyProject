@@ -1,5 +1,7 @@
 # polyProject
 
+Click in to this and click on raw/edit to read it properly formatted. It's a mess to read otherwise
+
 Some pseudo code if anyone wants to use it for their modules. 
 Most of these will require create poly to be done similar to my pseudo code
 

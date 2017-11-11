@@ -29,7 +29,7 @@ else
  
 3) Add poly:
   Create two variables that store power of first element in both polynomials ((llist name)->head->next->power)
-  Make result a copy of the polynomial with higher order term
+  Make result a copy of the polynomial with higher order term (use llist *result = copyPoly(nameOfHighestOrderPoly))
   while power of result is not equal to power of lower order polynomial
     move to next node in result polynomial.
   while current node is not null

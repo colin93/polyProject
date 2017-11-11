@@ -3,7 +3,6 @@
 
 //Things to add / can be added
 //1) enumerator for errors
-//2) All other function declerations
 
 
 typedef struct n {
@@ -17,9 +16,18 @@ typedef struct {
   polyElement *current; //Creates a pointer to current polynomial element you are at
 } llist;
 
-llist polyMultiply(llist *poly,double mult);
-llist polyDivide(llist *poly,double divide);
-llist polyNormalise(llist *poly);
+
+
+//Function declerations
+llist *createPoly();
+void deletePoly(llist *poly);
+void polyOrder(llist *poly);
+void printPoly(llist *poly);
+llist *polyAdd(llist *poly1,llist *poly2);
+llist *polySub(llist *poly1,llist *poly2);
+llist *polyMultiply(llist *poly,double mult);
+llist *polyDivide(llist *poly,double divide);
+llist *polyNormalise(llist *poly);
 
 
 #endif

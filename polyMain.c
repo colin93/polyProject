@@ -7,7 +7,7 @@
 int main(){
 
   int option=9; //choice for switch
-  llist poly1 = createPoly(); //polynomial for performing various functions
+  llist *poly1 = createPoly(); //polynomial for performing various functions
 
   while (option!=8){
     //table of operations
@@ -36,8 +36,8 @@ int main(){
       //Creates second polynomial and adds it to first
       //Prints out result then deletes resultant and second polynomial
       printf("Create a second polynomial\n");
-      llist poly2 = createPoly();
-      llist poly3 = polyAdd(poly1,poly2);
+      llist *poly2 = createPoly();
+      llist *poly3 = polyAdd(poly1,poly2);
       printPoly(poly1);
       printf("+");
       printPoly(poly2);
@@ -51,8 +51,8 @@ int main(){
       //Creates second polynomial and subtracts it from first
       //Prints result and deletes resultant and second polynomial
       printf("Create a second polynomial\n");
-      llist poly2 = createPoly();
-      llist poly3 = polySub(poly1,poly2);
+      llist *poly2 = createPoly();
+      llist *poly3 = polySub(poly1,poly2);
       printPoly(poly1);
       printf("-");
       printPoly(poly2);
@@ -68,7 +68,7 @@ int main(){
       double mult;
       printf("Please enter a value for multiplication");
       scanf("%lf",&mult);
-      llist poly2 = polyMultiply(poly1,mult);
+      llist *poly2 = polyMultiply(poly1,mult);
       printPoly(poly1);
       printf("multiplied by %f is",mult);
       printPoly(poly2);
@@ -81,7 +81,7 @@ int main(){
       double div;
       printf("Please enter a value for division");
       scanf("%lf",&mult);
-      llist poly2 = polyDivide(poly1,div);
+      llist *poly2 = polyDivide(poly1,div);
       printPoly(poly1);
       printf("divided by %f is",div);
       printPoly(poly2);
@@ -91,7 +91,7 @@ int main(){
     case 7:
       //Normalise and print poly
       //Then deletes normalised polynomial
-      llist poly2 = polyNormalise(poly1);
+      llist *poly2 = polyNormalise(poly1);
       printPoly(poly1);
       printf("\nNormalised is");
       printPoly(poly2);

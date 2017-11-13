@@ -6,22 +6,18 @@ Most of these will require create poly to be done similar to my pseudo code
 
 
 1)Create poly:
+Create an empty linked list
 Ask user for power and coeffecient of highest power term.
-Create a linked list node with these values
+use insertElement function with those values
 Ask user if there is any more terms in polynomial (do with a char or a simple 1/0 for yes and no)
 if no 
-  create nodes in linked list for all terms down to order of 0 storing 0 as their coeffecient
+  use fill poly function
 else
-  while user asks for more terms or power of current node is not 0
-    ask user for power of term
-    if (input power+1) is not equal to power of current term
-      while (input power+1) is not equal to power of current term
-        make new node with power set to power of (current term-1) with coeffecient of 0
-        make current node the new node
-    else 
-      ask user for coeffecient of polynomial term
-      make new node with entered power and coeffecient values
+  while user asks for more terms and power of current node is not 0
+    ask user for power and coefecient of term
+    use insertElement function with those values
     ask user if there are more terms in polynomials
+  use fill poly function
     
 2) Delete poly:
  Use the code from linkedList.c for deleteList
@@ -29,7 +25,7 @@ else
 3) Add poly:
   Create two variables that store power of first element in both polynomials ((llist name)->head->next->power)
   Make result a copy of the polynomial with higher order term (use llist *result = copyPoly(nameOfHighestOrderPoly))
-  while power of result is not equal to power of lower order polynomial
+  while power of result is not equal to power of lower order polynomial (need to make an if-else statement for this)
     move to next node in result polynomial.
   while current node is not null
     add coeffecient of result polynomial to coeffecient of lower order polynomial

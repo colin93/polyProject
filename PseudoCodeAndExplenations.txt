@@ -1,0 +1,186 @@
+data type: 
+	linked list: stores a pointer to current element in list and a pointer to head of list.
+	polyElement: stores value of coeffecient and power of element and points to next element in polynomial
+	
+createPoly: input: none
+			output: Poly of order ax^n where a is an element of the real numbers and n is an element of the natural numbers.
+	Pseudo Code:
+		Create new linked list
+		create head element
+		Ask user for coeffecient and power of highest power term
+		use insert element with provided values
+		Ask user if there are any more terms
+		if no
+			fillPoly
+	    else
+			While yes
+				ask for power and coeffecient of next term
+				insert element with these values
+				ask if there are any more terms
+			fillPoly
+				
+
+deletePoly: input: polynomial.
+			ouput: void
+	Pseudo Code:
+		Create a temp polyElement
+		Go to head of polynomial
+		while next element is not null
+			set temp to next element
+			set next pointer of head to node after temp
+			free temp
+		free head
+		free polynomial
+			
+		
+
+addPoly: input: poly1,poly2
+		 output: poly3=poly1+poly2
+		 
+		Pseudo Code:
+			create polynomial poly3
+			Read in highest power of poly1 and poly 2
+			if power of poly 1>=power of poly2
+				copy poly 1 to poly3
+				while power of current element of poly3 is greater than power of poly 2
+					move to next element in poly3
+				while current element is not null
+					set coeffecient of poly3 to current coeffecient plus coeffecient of poly2
+					move to next element in poly3 and poly2
+			else
+				copy poly 2 to poly3
+				while power of current element of poly3 is greater than power of poly 1
+					move to next element in poly3
+				while current element is not null
+					set coeffecient of poly3 to current coeffecient plus coeffecient of poly1
+					move to next element in poly3 and poly1
+			return poly3
+			
+		 
+subPoly: input: poly1,poly2
+		 output: poly3=poly1-poly2
+		 
+		Pseudo Code:
+			create polynomial poly3.
+			Read in highest power of poly1 and poly2
+			if power of poly1>= power of poly2
+				copy poly1 to poly3
+				while power of current element in poly3 is greater than power of poly2
+					move to next node in poly3
+				while current element in poly3 is not null
+					set coeffecient of poly3 to current coeffecient minus coeffecient of poly2
+					move to next element in poly3 and poly2
+			else
+				copy poly2 to poly3
+				while power of current element in poly3 is greater than power of poly1
+					set coeffecient of poly3 element to its negative
+					move to next node in poly3
+				while current node is not null
+					set coeffecient of poly3 to coeffecient of poly 1 minus coeffecient of poly3
+					move to next element of poly1 and poly3
+					
+			return poly3
+					
+		 
+polyMultiply: input poly1,x x an element of the real numbers
+			  output: poly2=x(poly1)
+			  
+			  Pseudo Code:
+				set poly2 to a copy of poly1
+				go to first element of poly2
+				while current element is not null
+					if coeffecient of current element is not 0
+						multiply current coeffecient by x
+						move to next element
+					else 
+						move to next element
+				return poly2
+			  
+polyDivide: input: poly1,x x an element of the real numbers
+			output: poly2=(poly1)/x
+			
+			Pseudo Code:
+				if x is not 0
+					set inverse to 1/x
+					set poly2 to polyMultiply(poly1,inverse)
+				else 
+					poly2=Null
+				return poly2
+					
+			
+polyNormalise: input: poly1
+			   output: poly2=(poly1)/n where n is order of poly1
+			   
+			   Pseudo Code:
+					set order to highest order of poly1
+					set poly2 to polyDivide(poly1,order)
+					return poly2
+
+printPoly: input:poly1
+		   output: void
+		   
+				Pseudo Code:
+					Go to head of poly1
+					while current node is not null
+						if coeffecient of current node is not 0
+							print (coeffecient)x^(power)
+							move to next node
+						else
+							move to next node
+		   
+polyOrder: input:poly1
+		   output: n where n is highest power of poly1
+				
+				Pseudo Code:
+					return poly1->head->next->power
+
+insertElement: input:n,a,poly1 n an element of natural numbers a an element of the real numbers
+			   output: void
+			   
+			   Pseudo Code:
+					create new element
+					set power to n
+					set coeffecient to a
+					set next pointer to next pointer of current element in poly1
+					set next pointer of current element in poly1 to new element
+
+polyCopy: input: poly1
+		  output: poly2=poly1
+		  
+				Pseudo Code:
+					create poly2
+					create head of poly2
+					set current pointer of poly1 to first element
+					set current pointer of poly2 to head
+					while current element of poly1 is not null
+						create new element
+						set coeffecient of new element to coeffecient of poly1
+						set power of new element to power of poly1
+						set next of new element to next pointer of poly2
+						set next pointer of poly2 to new element
+						move to next element in poly2
+						move to next element in poly1
+					return poly2
+
+fillPoly: input: poly1
+		  output: void
+		
+				Pseudo Code:
+					set current pointer to first element
+					while current element is not null
+						while not at last element
+							for i=power of current element -1 down to power of next element+1
+								insert element with power i and coeffecient 0
+								move to next element
+							move to next element
+						if power of current element is not null 
+							for i= power of current element down to 0
+								insert element with power i and coeffecient 0
+								move to next element
+							move to next element
+						else 
+							move to next element
+		  
+
+			   
+

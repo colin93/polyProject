@@ -29,7 +29,7 @@ int main(){
       break;
       
     case 2: //Print order of polynomial
-      polyOrder(poly1);
+      printf("%d",polyOrder(poly1));
       break;
       
     case 3:
@@ -102,7 +102,13 @@ int main(){
       //Deletes original polynomial and exits program
       polyDelete(poly1);
       printf("Exiting program\n");
-      break
+      break;
+    
+    default:
+      printf("Invalid input. Exiting program\n");
+      option = 8;
+      break;
+	      
 	
       
     }

@@ -38,7 +38,8 @@ polynomial *polyNormalise(polynomial *poly);
 void goToHead(polynomial *poly);
 void nextElement(polynomial *poly);
 int getPower(polynomial *poly);
+void setPower(polynomial *poly,int power);
 double getCoeffecient(polynomial *poly);
-
+void setCoeffecient(polynomial *poly,double coeffecient);
 
 #endif

@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "poly.h"
 
-polynomial *polyAdd(polynomial *poly1,polynomial*poly2)
+polynomial *polySub(polynomial *poly1,polynomial*poly2)
 {
 polynomial *result;//This is creating Polynominal
   
@@ -48,13 +48,13 @@ printf(" %lf is coeficient of first poly and %lf is the coeficient of second pol
 while(result->sturcture->current->element->power > poly1->structure->current->element->power)
 result->structure->currrent->element = result->structure->current->element->next;
 while(result->structure->current != NULL)
-result->structure->current->element->coeffecient + poly1->structure->current-
->element->coeffecient; = result->structure->current->element->coeffecient 
+result->structure->current->element->coeffecient = - result->structure->current->element->coeffecient + poly1->structure->current-
+>element->coeffecient;
 poly1->structure->currrent = poly1->structure->current->element->next
 result->structure->currrent-element = result->structure->current->element->next;
 }
 
 }
   
-return result;
-} //returns value of poly after multiplication
+  return result; //returns value of poly after multiplication
+}

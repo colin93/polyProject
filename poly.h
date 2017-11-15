@@ -35,6 +35,10 @@ polynomial *polySub(polynomial *poly1,polynomial *poly2);
 polynomial *polyMultiply(polynomial *poly,double mult);
 polynomial *polyDivide(polynomial *poly,double divide);
 polynomial *polyNormalise(polynomial *poly);
+void goToHead(polynomial *poly);
+void nextElement(polynomial *poly);
+int getPower(polynomial *poly);
+double getCoeffecient(polynomial *poly);
 
 
 #endif

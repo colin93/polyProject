@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include "poly.h"
 
-llist *polyAdd(llist *poly1,llist *poly2)
+polynomial *polyAdd(polynomial *poly1,polynomial*poly2)
 {
-llist *result;//This is creating Polynominal
+polynomial *result;//This is creating Polynominal
+  
 //Check if both poly llist is empty
 if (poly1->head->next == NULL || poly2->head->next == NULL){
 printf("Both supplied polynomials are empty");
@@ -28,10 +29,10 @@ int polyPowers1 = polyOrder(poly1);
 int polyPowers2 = polyOrder(poly2);
 if(polyPower1 >= polyPower2){
 result = copyPoly1(poly1)
-while(result->current->power > poly2->current->power)
-result->currrent = result->current->next;
-while(result->current != NULL)
-result->current->coeffecient = result->current->coeffecient + poly2->current-
+while(result->structure->current->element->power > poly2->current->power)
+result->stucture->currrent->element = result->structure->current->element->next;
+while(result->structure->current->element != NULL)
+result->structure->current->element->coeffecient = result->strucutre->current->element->coeffecient + poly2->current-
 >coeffecient;//change to -
 poly2->currrent = poly2->current->next
 result->currrent = result->current->next;
@@ -41,14 +42,17 @@ printf(" %lf is cooficient of first poly and %lf is the cooficient of second pol
 }else{result = copyPoly1(poly2)
 
 while(result->current->power > poly1->current->power)
-result->currrent = result->current->next;
+result->structure->currrent->element = result->structure->current->element->next;
 while(result->current != NULL)
-result->current->coeffecient = result->current->coeffecient + poly1->current-
+result->structure->current->element->coeffecient = result->structure->current->element->coeffecient + poly1->current-
 >coeffecient;
 poly1->currrent = poly1->current->next
-result->currrent = result->current->next;
+result->structure->currrent-element = result->structure->current->element->next;
 }
 
+}
+  
+  return result; //returns value of poly after multiplication
 }
 //Copy input poly to result may need to change this to do a malloc
 // result->current = result->head->next; //Set current node to first node
@@ -75,4 +79,3 @@ else //sets current node to next node in list
 result->current=result->current->next;
 }
 */
-return result; //returns value of poly after multiplication

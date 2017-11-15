@@ -20,7 +20,8 @@ polynomial *polyMultiply(polynomial *polyIn,double mult)
     }
   else{
     polynomial *result = copyPoly(polyIn); //Copy input poly to result may need to change this to do a malloc
-    result->structure->current = result->structure->head->next; //Set current node to first node
+    goToHead(result);//Set current node to first node
+    nextElement(result);
     while (result->structure->current != NULL){    //Stops when reaches tail
 
       /*
@@ -29,13 +30,13 @@ polynomial *polyMultiply(polynomial *polyIn,double mult)
 	be coeffecient * mult
 	sets current node to next node in list
        */
-      if (result->structure->current->element->coeffecient!=0)
+      if (getCoeffecient(result)!=0)
 	{
-	result->structure->current->element->coeffecient=(result->structure->current->element->coeffecient)*mult;
-	result->structure->current=result->structure->current->next;
+	setCoeffecient(result,(getCoeffecient(result))*mult);
+	nextElement(result);
 	}
       else //sets current node to next node in list
-	result->structure->current=result->structure->current->next;
+	nextElement(result);
       }
     return result; //returns value of poly after multiplication
     }
@@ -59,7 +60,8 @@ polynomial *polyDivide(polynomial *polyIn,double divide)
 
 polynomial *polyNormalise(llist *polyIn)
 {
-  double first = polyIn->structure->head->next->element->coeffecient; //gets coeffecient of highest order term
-  polynomial *result = polyDivide(polyIn,first); //divides poly by that coeffecient
+  goToHead(polyIn);
+  nextElement(polyIn);
+  polynomial *result = polyDivide(polyIn,getPower(polyIn)); //divides poly by that coeffecient
   return result;
 }

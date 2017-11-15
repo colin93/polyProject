@@ -33,25 +33,23 @@ int polyPowers1 = polyOrder(poly1);
 int polyPowers2 = polyOrder(poly2);
 if(polyPower1 >= polyPower2){
 result = copyPoly1(poly1)
-while(result->structure->current->element->power > poly2->structure->current->element->power)
-result->stucture->currrent->element = result->structure->current->element->next;
-while(result->structure->current->element != NULL)
-result->structure->current->element->coeffecient = result->strucutre->current->element->coeffecient - poly2->structure->current-
->element->coeffecient;//change to -
-poly2->structure->currrent->element = poly2->structure->current->element->next
-result->structure->currrent->element = result->structure->current->element->next;
-printf(" %lf is coeficient of first poly and %lf is the coeficient of second poly", poly1->structure->current-
->element->coeffecient , poly2->structure->current->element->coeffecient);
+while(getPower(result) > polyPowers2)
+nextElement(result);
+while(result->structure->current != NULL)
+setCoeffecient(result,getCoeffecient(result)-getCoeffecient(poly2));//change to -
+nextElement(poly2);
+nextElement(result);
+printf(" %lf is coeficient of first poly and %lf is the coeficient of second poly", getCoeffecient(result) ,getCoeffecient(poly2));
 
 }else{result = copyPoly1(poly2)
 
-while(result->sturcture->current->element->power > poly1->structure->current->element->power)
-result->structure->currrent->element = result->structure->current->element->next;
+while(getPower(result) > getPower(poly1))
+setCoeffecient(result,-(getCoeffecient(result));
+nextElement(result);
 while(result->structure->current != NULL)
-result->structure->current->element->coeffecient = - result->structure->current->element->coeffecient + poly1->structure->current-
->element->coeffecient;
-poly1->structure->currrent = poly1->structure->current->element->next
-result->structure->currrent-element = result->structure->current->element->next;
+setCoeffecient(result,getCoeffecient(poly1)-getCoeffecient(result));
+nextElement(poly1);
+nextElement(result);
 }
 
 }

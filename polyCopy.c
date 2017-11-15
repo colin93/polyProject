@@ -16,12 +16,12 @@ polynomial *copyPoly(polynomial *polyIn){
     llnode *elementCopy; //Creates node for copying elements
     elementCopy = (*llnode)malloc(sizeof(llnode)); //allocates memory for new node
     
-    elementCopy->element->coeffecient = polyIn->structure->current->element->coeffecient; //copies values for coeffecient of input poly
-    elementCopy->element->power = polyIn->structure->current->element->power;   //Copies values of powers for input polynomial
+    elementCopy->element->coeffecient = getCoeffecient(polyIn); //copies values for coeffecient of input poly
+    elementCopy->element->power = getPower(polyIn);   //Copies values of powers for input polynomial
     elementCopy->next = polyCopy->structure->current->next;  //Sets next pointer of new node to tail of copy polynomial
     polyCopy->structure->current->next = elementCopy; //Sets pointer for next node in polyCopy to new node
-    polyCopy->structure->current = polyCopy->structure->current->next; //Sets current in polyCopy to new node
-    polyIn->structure->current = polyIn->structure->current->next; //Moves to next element in input polynomial
+    nextElement(polyCopy); //Sets current in polyCopy to new node
+    nestElement(polyIn); //Moves to next element in input polynomial
   }
   
   return polyCopy; //Returns the copied polynomial

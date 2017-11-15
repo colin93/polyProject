@@ -11,7 +11,7 @@
  */
 
 
-llist *polyMultiply(llist *polyn,double mult)
+polynomial *polyMultiply(polynomial *polyIn,double mult)
 {
   //Check if input llist is empty
   if (polyn->head->next == NULL){
@@ -19,9 +19,9 @@ llist *polyMultiply(llist *polyn,double mult)
     return polyn;
     }
   else{
-    llist *result = copyPoly(polyn); //Copy input poly to result may need to change this to do a malloc
-    result->current = result->head->next; //Set current node to first node
-    while (result->current != NULL){    //Stops when reaches tail
+    polynomial *result = copyPoly(polyIn); //Copy input poly to result may need to change this to do a malloc
+    result->structure->current = result->structure->head->next; //Set current node to first node
+    while (result->structure->current != NULL){    //Stops when reaches tail
 
       /*
 	if coefficent value for current node is not 0
@@ -29,37 +29,37 @@ llist *polyMultiply(llist *polyn,double mult)
 	be coeffecient * mult
 	sets current node to next node in list
        */
-      if (result->current->coeffecient!=0)
+      if (result->structure->current->element->coeffecient!=0)
 	{
-	result->current->coeffecient=(result->current->coeffecient)*mult;
-	result->current=result->current->next;
+	result->structure->current->element->coeffecient=(result->structure->current->element->coeffecient)*mult;
+	result->structure->current=result->structure->current->next;
 	}
       else //sets current node to next node in list
-	result->current=result->current->next;
+	result->structure->current=result->structure->current->next;
       }
     return result; //returns value of poly after multiplication
     }
   
 }
 
-llist *polyDivide(llist *polyn,double divide)
+polynomial *polyDivide(polynomial *polyIn,double divide)
 {
   if(divide!=0) //to stop divide by 0
     {
       double inv = 1.0/divide; //invert input
-      llist *result = polyMultiply(polyn,inv); //perform multiply with inverse of input
+      polynomial *result = polyMultiply(polyIIn,inv); //perform multiply with inverse of input
     }
   else
     {
       printf("Can not divide by 0");
-      llist *result = NULL;
+      polynomial *result = NULL;
     }
   return result;
 }
 
-llist *polyNormalise(llist *polyn)
+polynomial *polyNormalise(llist *polyIn)
 {
-  double first = polyn->head->next->coeffecient; //gets coeffecient of highest order term
-  llist *result = polyDivide(polyn,first); //divides poly by that coeffecient
+  double first = polyIn->structure->head->next->element->coeffecient; //gets coeffecient of highest order term
+  polynomial *result = polyDivide(polyIn,first); //divides poly by that coeffecient
   return result;
 }

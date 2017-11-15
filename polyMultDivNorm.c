@@ -1,4 +1,4 @@
-#include "mypoly.h"
+#include "poly.h"
 #include <stdlib.h>
 #include <stdio.h>
 

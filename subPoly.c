@@ -1,4 +1,8 @@
-//addPoly.c
+//subPoly.c
+//Author: Diarmuid McCarthy
+//To subtract two polynomial
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "poly.h"

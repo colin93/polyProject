@@ -1,4 +1,4 @@
-objects := createPoly.o deletePoly.o addPoly.o subPoly.o polyMultDivNorm.o polyPrint.o polyOrder.o insertElement.o polyCopy.o fillPoly.o polyMain.o
+objects := createPoly.o deletePoly.o addPoly.o subPoly.o polyMultDivNorm.o polyPrint.o polyOrder.o insertElement.o polyCopy.o fillPoly.o polyPointers.o polyMain.o
 exec := $(objects) polyProgram
 
 all: $(exec)
@@ -32,6 +32,9 @@ polyCopy.o: polyCopy.c poly.h
 
 fillPoly.o: fillPoly.c poly.h
 	gcc -Wall -ggdb -c fillPoly.c
+	
+polyPointers.o: polyPointers.c poly.h
+	gcc -Wall -ggdb -c polyPointers.c
 
 polyMain.o: polyMain.c poly.h
 	gcc -Wall -ggdb -c polyMain.c

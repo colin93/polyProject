@@ -7,11 +7,11 @@ polynomial *polyAdd(polynomial *poly1,polynomial*poly2)
 {
   polynomial *result;//This is creating Polynominal
 
-  //Check if both poly llist is empty
+  //Check if either poly llist is empty
   if (poly1->head->next == NULL || poly2->head->next == NULL){
-  printf("Both supplied polynomials are empty");
-  result = NULL;
-  return result;
+    printf("Both supplied polynomials are empty");
+    result = NULL;
+    return result;
   //return any of supplied polinomials as both are empty
   }
   /*//Check if only first poly llist is empty

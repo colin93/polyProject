@@ -3,31 +3,38 @@
 
 //Things to add / can be added
 //1) enumerator for errors
+typedef struct n{
+  polyElement *element;
+  struct n *next;
+}llnode
+
+typedef struct{
+  llnode *current;
+  llnode *head;
+}llist
 
 
-typedef struct n {
+typedef struct {
   int power; //Power of polynomial
   double coeffecient //Coeffecient of polynomial
-  struct n *next; //Pointer to next element of polynomial
 } polyElement; //Name for creating an element of the polynomial
 
 typedef struct {
-  polyElement *head; //Creates a pointer to head of linked list
-  polyElement *current; //Creates a pointer to current polynomial element you are at
-} llist;
+  llist *structure;
+} polynomial;
 
 
 
 //Function declerations
-llist *createPoly();
-void deletePoly(llist *poly);
-void polyOrder(llist *poly);
-void printPoly(llist *poly);
-llist *polyAdd(llist *poly1,llist *poly2);
-llist *polySub(llist *poly1,llist *poly2);
-llist *polyMultiply(llist *poly,double mult);
-llist *polyDivide(llist *poly,double divide);
-llist *polyNormalise(llist *poly);
+polynomial *createPoly();
+void deletePoly(polynomial *poly);
+void polyOrder(polynomial *poly);
+void printPoly(polynomial *poly);
+polynomial *polyAdd(polynomial *poly1,polynomial *poly2);
+polynomial *polySub(polynomial *poly1,polynomial *poly2);
+polynomial *polyMultiply(polynomial *poly,double mult);
+polynomial *polyDivide(polynomial *poly,double divide);
+polynomial *polyNormalise(polynomial *poly);
 
 
 #endif

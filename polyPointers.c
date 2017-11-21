@@ -5,24 +5,46 @@ void goToHead(polynomial *poly){
   poly-structure->current=poly->structure->head;
   }
 
-void nextElement(polynomial *poly){
-  poly->structure->current=poly->structure->current->next
+eleError nextElement(polynomial *poly){
+  eleError result = ok;
+  if (poly->structure->current != NULL)
+    poly->structure->current=poly->structure->current->next
+  else 
+    result = invalidElement;
+  return result;
+    
 }
 
 int getPower(polynomial *poly){
-  return poly->structure->current->element->power;
+  if (poly->structure->current == poly->structure->head || poly->structure->current == NULL)
+    return NULL;
+  else 
+    return poly->structure->current->element->power;
 }
 
-void setPower(polynomial *poly, int power){
-  poly->structure->current->element->power=power;
+inputError setPower(polynomial *poly, int power){
+  inputError result = ok;
+  if (poly->structure->current!=NULL && poly->structure->current != poly->structure->head)
+    poly->structure->current->element->power=power;
+  else 
+    result = invalidElement;
+  return result;
 }
 
 
 double getCoeffecient (polynomial *poly){
-  return poly->structure->current->element->coeffecient;
+  if (poly->structure->current == poly->structure->head || poly->structure->current == NULL)
+    return NULL;
+  else 
+    return poly->structure->current->element->coeffecient;
 }
 
-void setCoeffecient(polynomial *poly,double coeff){
-  poly->structure->current->element->coeffecient = coeff;  
+inputError setCoeffecient(polynomial *poly,double coeff){
+  inputError result = ok;
+  if (poly->structure->current!=NULL && poly->structure->current != poly->structure->head)
+    poly->structure->current->element->coeffecient=coeff;
+  else 
+    result = invalidElement;
+  return result;  
 }
 

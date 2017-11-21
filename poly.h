@@ -3,7 +3,7 @@
 
 typedef enum { ok, negPower , zeroInput, NullPoly, invalidElement} inputError;
 
-typedef enum { ok,  noMemory} eleError;
+typedef enum { ok,  noMemory, negPower} eleError;
 
 //Things to add / can be added
 //1) enumerator for errors

@@ -7,15 +7,13 @@
 #include <stdlib.h>
 #include "poly.h"
 
-polynomial *polySub(polynomial *poly1,polynomial*poly2)
+inputError polySub(polynomial *poly1,polynomial*poly2)
 {
-  polynomial *result;//This is creating Polynominal
+  inputError result = ok;//This is creating Polynominal
 
   //Check if both poly llist is empty
   if (poly1->head->next == NULL || poly2->head->next == NULL){
-    printf("Both supplied polynomials are empty");
-    result = NULL;
-    return result;
+    result = NullPoly;
     //return any of supplied polinomials as both are empty
   }
   /*//Check if only first poly llist is empty
@@ -32,24 +30,22 @@ polynomial *polySub(polynomial *poly1,polynomial*poly2)
     int polyPowers1 = polyOrder(poly1);
     int polyPowers2 = polyOrder(poly2);
     if(polyPower1 >= polyPower2){
-      result = copyPoly1(poly1)
-      while(getPower(result) > polyPowers2)
-      nextElement(result);
-      while(result->structure->current != NULL)
-      setCoeffecient(result,getCoeffecient(result)-getCoeffecient(poly2));//change to -
-      nextElement(poly2);
-      nextElement(result);
-      }
-    else{
-      result = copyPoly1(poly2)
-      while(getPower(result) > getPower(poly1)){
-        setCoeffecient(result,-(getCoeffecient(result));
-        nextElement(result);
-        }
-      while(result->structure->current != NULL){
-        setCoeffecient(result,getCoeffecient(poly1)-getCoeffecient(result));
+      while(getPower(poly1) > polyPowers2)
         nextElement(poly1);
-        nextElement(result);
+      while((setCoeffecient(poly1,getCoeffecient(poly1)-getCoeffecient(poly2))==ok){
+        nextElement(poly2);
+        nextElement(poly1);
+        }
+    else{
+      goToHead(poly1);
+      while(getPower(poly2) > getPower(poly1)){
+        insertElement(getPower(poly2),-getCoeffecient(poly2),poly1);
+        nextElement(poly1);
+        nextElement(poly2);
+        }
+      while(setCoeffecient(result,getCoeffecient(poly1)-getCoeffecient(poly2))==ok){
+        nextElement(poly1);
+        nextElement(poly2);
         }
       }
 

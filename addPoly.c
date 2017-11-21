@@ -8,7 +8,7 @@ inputError polyAdd(polynomial *poly1,polynomial*poly2)
   inputError result = ok;//This is creating Polynominal
 
   //Check if either poly llist is empty
-  if (poly1->head->next == NULL || poly2->head->next == NULL){
+  if (poly1->structure->head->next == NULL || poly2->structure->head->next == NULL){
     printf("Both supplied polynomials are empty");
     result = NullPoly;
   //return any of supplied polinomials as both are empty
@@ -26,7 +26,7 @@ inputError polyAdd(polynomial *poly1,polynomial*poly2)
   else{
     int polyPowers1 = polyOrder(poly1);
     int polyPowers2 = polyOrder(poly2);
-    if(polyPower1 >= polyPower2){
+    if(polyPowers1 >= polyPowers2){
       while(getPower(poly1) > polyPowers2)
         nextElement(poly1);
       while(setCoeffecient(poly1,getCoeffecient(poly1)+getCoeffecient(poly2))==ok){

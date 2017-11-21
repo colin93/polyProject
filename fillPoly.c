@@ -6,7 +6,7 @@ void fillPoly (polynomial *poly){
    poly->structure->current=poly->structure->head->next; //Go to first element
    int i; //counter
    while (poly->structure->current->next!=NULL){ //While not at last element
-      for(i=(getPower(poly))-1;i>(poly->structure->current->next->power);i--){
+      for(i=(getPower(poly))-1;i>(poly->structure->current->next->element->power);i--){
 	 //fill in powers between two elements with coeffecient 0
  	 insertElement(i,0,poly);
 	 nextElement(poly);//moves to inserted node

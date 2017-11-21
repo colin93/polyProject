@@ -1,3 +1,7 @@
+#include "poly.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 polynomial *createPoly(){
     polynomial *polyNew;
     polyNew = (polynomial*)malloc(sizeof(polynomial));
@@ -5,16 +9,17 @@ polynomial *createPoly(){
     	polyNew->structure->head=(llnode*)malloc(sizeof(llnode));
 	if(polyNew->structure->head!=NULL){
     		polyNew->structure->head->next = NULL;
-		goToHead(polyNew);
+		polyNew->structure->current=polyNew->structure->head;
 	}
 	else{
 		free(polyNew);
 		polyNew=NULL;
 	}
+    }
     return polyNew;
 }
 
-void deletePoly( polynomial *poly ){
+void deletePoly(polynomial *poly){
     llnode *p,*q;
     p = poly->structure->head;
     while( p->next != NULL ){
@@ -25,4 +30,5 @@ void deletePoly( polynomial *poly ){
     free(p);
     free(poly);
     printf("You have successfully deleted.\n");
+    return;
 }

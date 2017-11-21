@@ -1,27 +1,34 @@
 #include "poly.h"
-#inlcude <stdlib.h>
+#include <stdlib.h>
 
 eleError insertElement(int power, double coeffecient,polynomial *poly){
   
-  eleError result = ok;
+  eleError result = okay;
   
   if(power < 0)
-    result = negPower;
+    result = negativePower;
   else{
+    polyElement *newElement;
+ 
+    newElement = (polyElement *) malloc(sizeof(polyElement));
+    if(newElement!=NULL){
+	    newElement->power = power;
+	    newElement->coeffecient = coeffecient;
+	    llnode *newNode; //create new element
 
-    llnode *newelement; //create new element
+	    newNode = (llnode *) malloc(sizeof(llnode)); //allocate memory for element
 
-    newelement = (llnode *) malloc(sizeof(llnode)); //allocate memory for element
-
-    if (newelement !=NULL) {
-      newelement->element->power = power; //set power of new element to input power
-      newelement->element->coeffecient = coeffecient; //set coeffecient of element to input coeffecient
-
-      newelement->next = poly->structure->current->next //set next in new element to next pointer in poly
-      poly->structure->current->next = newelement; //link new elemnet into poly
-    }
-    else 
-      result = noMemory;
+	    if (newNode !=NULL) {
+	      newNode->element=newElement;
+              newNode->next=poly->structure->current->next;
+	      poly->structure->current->next=newNode;
+	      nextElement(poly);
+	    }
+	    else 
+	      result = noMemory;
+	  }
+    else
+	 result=noMemory;
   }
   return result;
 }

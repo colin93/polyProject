@@ -2,13 +2,13 @@
 #include <stdlib.h>
 
 void goToHead(polynomial *poly){
-  poly-structure->current=poly->structure->head;
+  poly->structure->current=poly->structure->head;
   }
 
 eleError nextElement(polynomial *poly){
-  eleError result = ok;
+  eleError result = okay;
   if (poly->structure->current != NULL)
-    poly->structure->current=poly->structure->current->next
+    poly->structure->current=poly->structure->current->next;
   else 
     result = invalidElement;
   return result;
@@ -17,7 +17,7 @@ eleError nextElement(polynomial *poly){
 
 int getPower(polynomial *poly){
   if (poly->structure->current == poly->structure->head || poly->structure->current == NULL)
-    return NULL;
+    return -1;
   else 
     return poly->structure->current->element->power;
 }
@@ -34,7 +34,7 @@ inputError setPower(polynomial *poly, int power){
 
 double getCoeffecient (polynomial *poly){
   if (poly->structure->current == poly->structure->head || poly->structure->current == NULL)
-    return NULL;
+    return 0;
   else 
     return poly->structure->current->element->coeffecient;
 }

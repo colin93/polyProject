@@ -12,7 +12,7 @@ inputError polySub(polynomial *poly1,polynomial*poly2)
   inputError result = ok;//This is creating Polynominal
 
   //Check if both poly llist is empty
-  if (poly1->head->next == NULL || poly2->head->next == NULL){
+  if (poly1->structure->head->next == NULL || poly2->structure->head->next == NULL){
     result = NullPoly;
     //return any of supplied polinomials as both are empty
   }
@@ -29,13 +29,14 @@ inputError polySub(polynomial *poly1,polynomial*poly2)
   else{
     int polyPowers1 = polyOrder(poly1);
     int polyPowers2 = polyOrder(poly2);
-    if(polyPower1 >= polyPower2){
+    if(polyPowers1 >= polyPowers2){
       while(getPower(poly1) > polyPowers2)
         nextElement(poly1);
-      while((setCoeffecient(poly1,getCoeffecient(poly1)-getCoeffecient(poly2))==ok){
+      while((setCoeffecient(poly1,getCoeffecient(poly1)-getCoeffecient(poly2)))==ok){
         nextElement(poly2);
         nextElement(poly1);
         }
+      }
     else{
       goToHead(poly1);
       while(getPower(poly2) > getPower(poly1)){
@@ -43,7 +44,7 @@ inputError polySub(polynomial *poly1,polynomial*poly2)
         nextElement(poly1);
         nextElement(poly2);
         }
-      while(setCoeffecient(result,getCoeffecient(poly1)-getCoeffecient(poly2))==ok){
+      while(setCoeffecient(poly1,getCoeffecient(poly1)-getCoeffecient(poly2))==ok){
         nextElement(poly1);
         nextElement(poly2);
         }

@@ -1,4 +1,4 @@
-#inlcude <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "poly.h"
 
@@ -8,21 +8,21 @@ int main(){
  
   printf("Creating poly1:\n");
   polynomial *poly1 = createPoly();
-  insertElement (,,poly1);
-  insertElement (,,poly1);
-  insertElement (,,poly1);
-  insertElement (,,poly1);
+  insertElement (6,3.2,poly1);
+  insertElement (4,-1.5,poly1);
+  insertElement (3,6.0,poly1);
+  insertElement (0,-2.0,poly1);
   printf("Attempt to input negative power\n");
-  insertElement(-1,2,poly1);
+  insertElement(-1,2.0,poly1);
   fillPoly(poly1);
   printf("poly1 has order %d",polyOrder(poly1));
 	
   printf("Creating poly2:\n");
   polynomial *poly2 = createPoly();
-  insertElement (,,poly2);
-  insertElement (,,poly2);
-  insertElement (,,poly2);
-  insertElement (,,poly2);
+  insertElement (5,2.0,poly2);
+  insertElement (4,2.67,poly2);
+  insertElement (3,-1.6,poly2);
+  insertElement (2,1.67,poly2);
   fillPoly(poly2);
 	
   printf("Value of poly1 is:\n");
@@ -40,15 +40,15 @@ int main(){
   polyMultiply(poly1,5.0);
   printPoly(poly1);
 	
-  printf("Attempt to divide by 0")
+  printf("Attempt to divide by 0");
   polyDivide(poly1,0);
 	
   printf("Dividing poly1 by 5 results in\n");
   polyDivide(poly1,5.0);
   
-  printf("Normalising results in:\n")
+  printf("Normalising results in:\n");
   polyNormalise(poly1);
-  printf(poly1);
+  printPoly(poly1);
 	 	
 	
 	

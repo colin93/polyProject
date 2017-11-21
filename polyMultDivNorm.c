@@ -11,12 +11,13 @@
  */
 
 
-void polyMultiply(polynomial *polyIn,double mult)
+inputError polyMultiply(polynomial *polyIn,double mult)
 {
+  inputError result = ok;
   //Check if input llist is empty
-  if (polyn->head->next == NULL){
+  if (polyIn->structure->head->next == NULL){
     printf("Supplied polynomial is empty");
-    return polyIn;
+    result = NullPoly;
     }
   else{
     goToHead(polyIn);
@@ -37,29 +38,30 @@ void polyMultiply(polynomial *polyIn,double mult)
       else //sets current node to next node in list
 	nextElement(polyIn);
       }
-    return;
+    
     }
-  
+  return result;
 }
 
-inputError *polyDivide(polynomial *polyIn,double divide)
+inputError polyDivide(polynomial *polyIn,double divide)
 {
   inputError result = ok;
   if(divide!=0) //to stop divide by 0
     {
       double inv = 1.0/divide; //invert input
-      polyMultiply(polyIIn,inv); //perform multiply with inverse of input
+      result = polyMultiply(polyIn,inv); //perform multiply with inverse of input
     }
   else
     {
       result= zeroInput;
     }
-  result;
+  return result;
 }
 
-void polyNormalise(llist *polyIn)
+inputError polyNormalise(polynomial *polyIn)
 {
   goToHead(polyIn);
   nextElement(polyIn);
-  polyDivide(polyIn,getCoeffecient(polyIn));
+  inputError result = polyDivide(polyIn,getCoeffecient(polyIn));
+  return result;
 }

@@ -29,3 +29,5 @@ void printPoly(polynomial *poly){
   else if(getCoeffecient(poly)<0)
     printf(" - %.2f" ,-getCoeffecient(poly));
 }
+
+

@@ -35,7 +35,7 @@ void deletePoly( polynomial *poly );
 int polyOrder(polynomial *poly);
 eleError insertElement(int power, double coeffecient, polynomial *poly);
 void printPoly(polynomial *poly);
-void fillPoly(polynomial *poly);
+eleError fillPoly(polynomial *poly);
 inputError polyAdd(polynomial *poly1,polynomial *poly2);
 inputError polySub(polynomial *poly1,polynomial *poly2);
 inputError polyMultiply(polynomial *poly,double mult);

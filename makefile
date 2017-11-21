@@ -1,4 +1,4 @@
-objects := polycreadel.o addPoly.o subPoly.o polyMultDivNorm.o printPoly.o polyOrder.o insertElement.o fillPoly.o polyPointers.o polyMain.o
+objects := polycreadel.o addPoly.o subPoly.o polyMultDivNorm.o fillPoly.o printPoly.o polyOrder.o insertElement.o polyPointers.o polyMain.o
 exec := $(objects) polyProgram
 
 all: $(exec)
@@ -12,6 +12,9 @@ addPoly.o: addPoly.c poly.h
 subPoly.o: subPoly.c poly.h
 	gcc -Wall -ggdb -c subPoly.c
 
+fillPoly.o: fillPoly.c poly.h
+	gcc -Wall -ggdb -c fillPoly.c
+
 polyMultDivNorm.o: polyMultDivNorm.c poly.h
 	gcc -Wall -ggdb -c polyMultDivNorm.c
 
@@ -24,9 +27,6 @@ polyOrder.o: polyOrder.c poly.h
 insertElement.o: insertElement.c poly.h
 	gcc -Wall -ggdb -c insertElement.c
 
-fillPoly.o: fillPoly.c poly.h
-	gcc -Wall -ggdb -c fillPoly.c
-
 polyPointers.o: polyPointers.c poly.h
 	gcc -Wall -ggdb -c polyPointers.c
 
@@ -37,6 +37,6 @@ polyProgram: $(objects)
 	gcc -o polyProgram $(objects)
 
 clean:
-	rm $(exec) *.o *~ *#
+	rm $(exec)
 
 

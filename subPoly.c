@@ -39,11 +39,11 @@ inputError polySub(polynomial *poly1,polynomial*poly2)
       }
     else{
       goToHead(poly1);
-      while(getPower(poly2) > getPower(poly1)){
+      while(getPower(poly2) > polyPowers1){
         insertElement(getPower(poly2),-getCoeffecient(poly2),poly1);
-        nextElement(poly1);
         nextElement(poly2);
         }
+      nextElement(poly1);
       while(setCoeffecient(poly1,getCoeffecient(poly1)-getCoeffecient(poly2))==ok){
         nextElement(poly1);
         nextElement(poly2);
@@ -51,6 +51,12 @@ inputError polySub(polynomial *poly1,polynomial*poly2)
       }
 
     }
+  llnode *delete;
+  while(poly1->structure->head->next->element->coeffecient==0){
+	delete = poly1->structure->head->next;
+	poly1->structure->head->next= delete->next;
+        free(delete);
+  }
 
   return result; //returns value of poly after multiplication
 }

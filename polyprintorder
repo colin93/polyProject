@@ -1,0 +1,24 @@
+#include"poly.h"
+#include<stdlib.h>
+#include<stdio.h>
+
+polynomial *printpoly(){
+	poly = poly->structure->head;
+	while(poly->next! = NULL){
+		if(coeffecient(poly)! = 0){
+			if(Power!=0){
+				printf("%.2fx^%d\n", coeffecient(poly),power(poly));
+			}
+			else if(Power=0){
+			printf("%.2f\n",coeffecient(poly));
+		    }
+			poly = poly->next;
+		    
+		else{
+		poly = poly->next;	
+		}
+	}
+} 
+
+int polyOrder(polynomial *polyIn)
+    return polyIn->structruce->head->next->element->power 

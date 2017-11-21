@@ -1,9 +1,9 @@
 #ifndef POLY_H
 #define POLY_H
 
-typedef enum { ok, negPower , zeroInput} inputError;
+typedef enum { ok, negPower , zeroInput, NullPoly} inputError;
 
-typedef enum { ok, endOfPoly, noMemory} eleError;
+typedef enum { ok, invalidElement, noMemory} eleError;
 
 //Things to add / can be added
 //1) enumerator for errors
@@ -31,12 +31,12 @@ typedef struct {
 
 //Function declerations
 polynomial *createPoly();
-void deletePoly(polynomial *poly);
+void deletePoly( polynomial *poly );
 int polyOrder(polynomial *poly);
 void printPoly(polynomial *poly);
 void fillPoly(polynomial *poly);
-polynomial *polyAdd(polynomial *poly1,polynomial *poly2);
-polynomial *polySub(polynomial *poly1,polynomial *poly2);
+inputError polyAdd(polynomial *poly1,polynomial *poly2);
+inputError polySub(polynomial *poly1,polynomial *poly2);
 inputError *polyMultiply(polynomial *poly,double mult);
 inputError *polyDivide(polynomial *poly,double divide);
 void *polyNormalise(polynomial *poly);

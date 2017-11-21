@@ -15,8 +15,8 @@ int main(){
   printf("Attempt to input negative power\n");
   insertElement(-1,2.0,poly1);
   fillPoly(poly1);
-  printf("poly1 has order %d",polyOrder(poly1));
-	
+  printf("poly1 has order %d\n",polyOrder(poly1));
+
   printf("Creating poly2:\n");
   polynomial *poly2 = createPoly();
   insertElement (5,2.0,poly2);

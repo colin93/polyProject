@@ -6,15 +6,23 @@ polynomial *createPoly(){
     polynomial *polyNew;
     polyNew = (polynomial*)malloc(sizeof(polynomial));
     if(polyNew!=NULL){
-    	polyNew->structure->head=(llnode*)malloc(sizeof(llnode));
-	if(polyNew->structure->head!=NULL){
-    		polyNew->structure->head->next = NULL;
-		polyNew->structure->current=polyNew->structure->head;
+	polyNew->structure = (llist *) malloc(sizeof(llist));
+	if (polyNew->structure !=NULL){
+	    	polyNew->structure->head=(llnode*)malloc(sizeof(llnode));
+		if(polyNew->structure->head!=NULL){
+	    		polyNew->structure->head->next = NULL;
+			polyNew->structure->current=polyNew->structure->head;
+		}
+		else{
+			free(polyNew->structure);
+			free(polyNew);
+			polyNew=NULL;
+		}
 	}
 	else{
 		free(polyNew);
 		polyNew=NULL;
-	}
+  	}
     }
     return polyNew;
 }

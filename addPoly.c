@@ -3,15 +3,14 @@
 #include <stdlib.h>
 #include "poly.h"
 
-polynomial *polyAdd(polynomial *poly1,polynomial*poly2)
+inputError polyAdd(polynomial *poly1,polynomial*poly2)
 {
-  polynomial *result;//This is creating Polynominal
+  inputError result = ok;//This is creating Polynominal
 
   //Check if either poly llist is empty
   if (poly1->head->next == NULL || poly2->head->next == NULL){
     printf("Both supplied polynomials are empty");
-    result = NULL;
-    return result;
+    result = NullPoly;
   //return any of supplied polinomials as both are empty
   }
   /*//Check if only first poly llist is empty
@@ -28,24 +27,23 @@ polynomial *polyAdd(polynomial *poly1,polynomial*poly2)
     int polyPowers1 = polyOrder(poly1);
     int polyPowers2 = polyOrder(poly2);
     if(polyPower1 >= polyPower2){
-      result = copyPoly1(poly1)
-      while(getPower(result) > polyPowers2)
-        nextElement(result);
-      while(result->structure->current->element != NULL){
-        setCoeffecient(result,getCoeffecient(result)+getCoeffecient(poly2));
-        nextElement(result);
+      while(getPower(poly1) > polyPowers2)
+        nextElement(poly1);
+      while(setCoeffecient(poly1,getCoeffecient(poly1)+getCoeffecient(poly2))==ok){
+        nextElement(poly1);
         nextElement(poly2);
       }
     }
     else{
-      result = copyPoly1(poly2)
-
-      while(getPower(result) > polyPowers1)
-        nextElement(result);
-      while(result->structure->current != NULL){
-        setCoeffecient(result,getCoeffecient(poly1)+getCoeffecient(result));
+      goToHead(poly1);
+      while(getPower(poly2) > polyPowers1){
+        insertElement(getPower(poly2),getCoeffecient(poly2),poly1);
         nextElement(poly1);
-        nextElement(result);
+        nextElement(poly2);
+      };
+      while(setCoeffecient(poly1,getCoeffecient(poly1)+getCoeffecient(poly2))==ok){
+        nextElement(poly1);
+        nextElement(poly2);
       }
     }
 

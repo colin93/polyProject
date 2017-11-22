@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "poly.h"
 
-//Will need to update all functions here to reflect all the functions that will be create
-
 int main(){
  
   printf("Creating poly1:\n");
@@ -16,9 +14,13 @@ int main(){
   insertElement (3,6.0,poly1);
   insertElement (0,-3.0,poly1);
   
-  //test 1 try input an element with a negative power
+
   printf("\nAttempt to input negative power\n");
-  insertElement(-1,2.0,poly1);
+  //test 1 try input an element with a negative power
+  if(insertElement(-1,2.0,poly1)==okay)
+    printf("Test failed\n");
+  else
+    printf("Test passed\n");
 	
   //print order of poly1
   printf("\npoly1 has order %d\n",polyOrder(poly1));
@@ -64,7 +66,10 @@ int main(){
 	
   printf("\n\nAttempt to divide by 0");
   //test 2 try to divide by 0
-  polyDivide(poly1,0);
+  if(polyDivide(poly1,0)==ok)
+    printf("Test failed\n");
+  else
+    printf("Test passed\n");
 	
   printf("\n\nDividing poly1 by 5 results in\n");
   //divide poly1 by 5 and print out result

@@ -64,7 +64,7 @@ eleError fillPoly (polynomial *poly){
 	  //link newNode into polynomial
 	  newNode->next=poly->structure->current->next;
 	  poly->structure->current->next=newNode;
-	  nextElement(poly);
+	  nextElement(poly); //move to inserted element
 	}
 	else{ 
 	  result = noMemory; //memory not allocated
@@ -75,7 +75,7 @@ eleError fillPoly (polynomial *poly){
       else
 	result=noMemory; //memory not allocated
     }
-    nextElement(poly); //moves to inserted element
+    nextElement(poly); //moves to tail
       
   }
   return result; //return relevant error message

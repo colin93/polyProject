@@ -1,0 +1,272 @@
+data type: 
+  linked list: stores a pointer to current element in list and a pointer to head of list.
+  polyElement: stores value of coeffecient and power of element and points to next element in polynomial
+
+  createPoly: input: none
+              output: Polynomial of order ax^n where a is an element of the real numbers and n is an element of the natural numbers.
+         Pseudo Code:
+	    Create new polynomial and allocate memory for it
+	    if memory is allocated
+	      create and allocate memory for structure (llist) of polynomial
+	      if memory is allocated
+	      	 create and allocate memory for head of polynomial
+		 set next pointer of head to null and current of polynomial to head
+	      else
+		 delete structure
+		 delete polynomial
+		 set polynomial to null
+	    else
+	      delete polynomial
+	      set polynomial to null
+	    return polynomial
+
+
+  deletePoly: input: polynomial.
+              ouput: void
+	      Pseudo Code:
+	        Create a temp llnode
+		while next pointer of head is not null
+		  set temp to next element
+		  set next pointer of head to node after temp
+		  free temp
+		free head
+		free polynomial
+
+
+
+addPoly: input: poly1,poly2
+	 output: inputError
+
+	 Pseudo Code:
+	  set output to ok
+	  if both inputs are null
+	    set output to nullPoly
+	  else
+	    get order of poly1 and poly2
+	    if order of poly1 >= order of poly2
+	      while power of current element in poly1 is greater than order of poly2
+	        move to next element in poly1
+	      while not at tail of input polynomials
+	      	add the current coeffecient of poly2 to the current coeffecient of poly1
+		move to next element in poly1 and poly2
+	    else
+	      go to head of poly1
+	      while power of current element in poly2 is greater than order of poly1
+	        create new element in poly1 with power and coeffecient equal to current element in poly2
+		move to next element in poly2
+	      while not at tail of input polynomials
+	        add the current coeffecient of poly2 to the current coeffecient of poly1
+		move to next element in poly1 and poly2
+
+	    delete any elements after head until you reach the tail or a non 0 coeffecient
+
+	    return output
+	      
+	   
+       
+
+
+subPoly: input: poly1,poly2
+	 output: inputError
+
+	 Pseudo Code:
+	   set output to ok
+	   if both inputs are null
+	     set output to nullPoly
+	   else
+	    get order of poly1 and poly2
+	    if order of poly1 >= order of poly2
+	      while power of current element in poly1 is greater than order of poly2
+	        move to next element in poly1
+	      while not at tail of input polynomials
+	      	subtract the current coeffecient of poly2 from the current coeffecient of poly1
+		move to next element in poly1 and poly2
+	    else
+	      go to head of poly1
+	      while power of current element in poly2 is greater than order of poly1
+	        create new element in poly1 with power of current element in poly2 and coeffecient equal tothe negative of current coeffecient in poly2
+		move to next element in poly2
+	      while not at tail of input polynomials
+	        subtract the current coeffecient of poly2 from the current coeffecient of poly1
+		move to next element in poly1 and poly2
+
+	    delete any elements after head until you reach the tail or a non 0 coeffecient
+
+	    return output
+	   
+
+
+
+polyMultiply: input polynomial,x x an element of the real numbers
+	      output: inputError
+
+	      Pseudo Code:
+	        set output to ok
+		if input polynomial is empty
+		  set output to nullPoly
+		else
+		  go to first element
+		  while not at tail of polynomial
+		    if coeffecient of current element is not 0
+		      set coeffecient to current value * x
+		      move to next element
+		    else
+		      move to next element
+		return output
+
+polyDivide: input: poly1,x x an element of the real numbers
+	    output: inputError
+
+	    Pseudo Code:
+	      set output to ok
+	      if x is 0
+	        set output to zeroInput
+	      else
+	        perform polyMultiply with input polynomial and 1.0/x and set its value to output
+	      return output
+	  
+
+
+polyNormalise: input: polynomial
+	       output: inputError
+	       Pseudo Code:
+	         go to first element in input polynomial
+		 get coeffecient for that element
+		 perform polyDivide with input polynomial and read coeffecient
+		 set output for function to value of polyDivide
+
+
+printPoly: input:polynomial
+	   output: void
+
+	   Pseudo Code:
+	     if input poly is empty
+	       print 0
+	     else
+	       go to first element
+	       if power of first element is not 0
+	         print ax^n where a is coeffecient of element and n is power of element
+		 while not at last element
+		   print any elements with non 0 coeffecients
+		   print with a + if postive or - if negative
+		   move to next element
+		 if last element is has non 0 coeffecient
+		   print its coeffecient
+	       else
+	         print coeffecient if non 0
+		  
+	         
+
+polyOrder: input:polynomial
+	   output: n where n is highest power of polynomial
+
+	   Pseudo Code:
+	     go to first element and return the value of its power
+
+insertElement: input:n,a,polynomial n an element of natural numbers a an element of the real numbers
+	       output: inputError
+
+	        Pseudo Code:
+		  set output to okay
+		  if n is less than 0
+		    set output to negPower
+		  else
+		    create and allocate memory for new element
+		    if memory is allocated
+	  	      set power to n
+		      set coeffecient to a
+		      create and allocate memory for new llnode
+		      if memory is allocated
+		        set element pointer to new element
+		        set next pointer of new node to next pointer of current node in polynomial
+		        set next pointer of current element in polynomial to new node
+		        set current pointer to new node
+		      else
+		        delete new element
+		        set output to noMemory
+		    else
+		      set output to noMemory
+		  return output
+
+
+fillPoly: input: polynomial
+output: eleError
+
+	Pseudo Code:
+	  set output to okay
+	  go to first element
+ 	  while not at last element
+	    for value of current power -1 down to value of next power
+	      insert element with power current power-1 and coeffecient 0
+	      if insufficent memory set output to noMemory
+	      move to inserted element
+	    move to next already created element
+	  if power of current element is not 0
+	    for value of current power -1 down to and including 0
+	      insert element with power current power-1 and coeffecient 0
+	      if insufficeient memory set output to noMemory
+	      move to inserted element
+
+
+getPower : input: polynomial
+	   output: n, n an integer
+
+	   Pseudo Code:
+	   if current element is head or tail
+	      return -1
+	   else
+	     return power of current element
+
+getCoeffecient: input:polynomial
+		output: a, an element of the real numbers
+
+		Pseudo Code:
+		if current element is head or tail
+		  return 0
+		else
+		  return coeffecient of current element
+
+setPower : input: polynomial,n n an integer
+	   output: inputError
+
+	   Pseudo Code:
+	     set output to ok
+	     if not at head or tail
+	       set power of current element to n
+	     else
+	       set output to invalidElement
+	     return output
+
+setCoeffecient: input: polynomial,a ,a an element of the real numbers
+		output: inputError
+
+		Pseudo Code:
+		  set output to ok
+		  if not at head or tail
+		    set coeffecient of current element to a
+		  else
+		    set output to invalidElement
+		  return output
+
+goToHead: input: polynomial
+          output: none
+
+	  PseudoCode:
+	    set current pointer of polynomial to head
+
+nextElement: input: polynomial
+	     output: eleError
+
+	     Pseudo Code:
+	       set output to okay
+	       if not at tail
+	         set current pointer to next element
+ 	       else
+	         set output to invalidElement
+		  
+
+
+
+
+
+

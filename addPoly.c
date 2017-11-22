@@ -57,7 +57,7 @@ inputError polyAdd(polynomial *poly1,polynomial*poly2)
 	poly1->structure->head->next= delete->next;
         free(delete);
     }
-    else
+    else //non 0 coeffecient found
       break;
   }
   

@@ -5,21 +5,20 @@ typedef enum { ok, negPower , zeroInput, NullPoly, invalidElement} inputError;
 
 typedef enum { okay,  noMemory, negativePower} eleError;
 
-//Things to add / can be added
-//1) enumerator for errors
+
 typedef struct {
   int power; //Power of polynomial
   double coeffecient; //Coeffecient of polynomial
 } polyElement; //Name for creating an element of the polynomial
 
 typedef struct n{
-  polyElement *element;
-  struct n *next;
+  polyElement *element; 
+  struct n *next; 
 }llnode;
 
 typedef struct{
-  llnode *current;
-  llnode *head;
+  llnode *current; 
+  llnode *head; 
 }llist;
 
 

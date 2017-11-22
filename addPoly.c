@@ -7,78 +7,60 @@ inputError polyAdd(polynomial *poly1,polynomial*poly2)
 {
   inputError result = ok;//This is creating Polynominal
 
-  //Check if either poly llist is empty
-  if (poly1->structure->head->next == NULL || poly2->structure->head->next == NULL){
-    printf("Both supplied polynomials are empty");
-    result = NullPoly;
-  //return any of supplied polinomials as both are empty
+  //Check if both polynomials are NULL
+  if (poly1->structure->head->next == NULL && poly2->structure->head->next == NULL){
+    result = NullPoly; //set result to show that supplied polys are null
   }
-  /*//Check if only first poly llist is empty
-  else if (poly1->head->next == NULL && poly2->head->next != NULL){
-  printf("First supplied polynomial is empty");
-  return poly2; //return the second supplied polinomian as first is empty
-  }
-  //Check if only second poly llist is empty
-  else if (poly1->head->next != NULL && poly2->head->next == NULL){
-  printf("Second supplied polynomial is empty");
-  return poly1; //return the first supplied polinomian as second is empty
-  }*/
   else{
-    int polyPowers1 = polyOrder(poly1);
-    int polyPowers2 = polyOrder(poly2);
-    if(polyPowers1 >= polyPowers2){
+    int polyPowers1 = polyOrder(poly1); //get highest power of poly1
+    int polyPowers2 = polyOrder(poly2); //get highest power of poly2
+    
+    if(polyPowers1 >= polyPowers2){ //check which poly has higher power
+
+      //move down through poly1 until at same power as highest power in poly2
       while(getPower(poly1) > polyPowers2)
         nextElement(poly1);
+
+      //while not at tail
+      //set coeffecient of poly1 to the addition of the two coeffecient in poly1 &poly2
       while(setCoeffecient(poly1,getCoeffecient(poly1)+getCoeffecient(poly2))==ok){
-        nextElement(poly1);
-        nextElement(poly2);
+        nextElement(poly1); //move to next element in poly1
+        nextElement(poly2); //move to next element in poly2
       }
     }
     else{
-      goToHead(poly1);
+      goToHead(poly1); //move to head for inserting new elements
+
+      //while power of poly2 is greater than order of poly1
       while(getPower(poly2) > polyPowers1){
+	//inserts new element into poly1 that is equal to same element from poly2
         insertElement(getPower(poly2),getCoeffecient(poly2),poly1);
-        nextElement(poly2);
+        nextElement(poly2); //move poly2 to next element
       }
-      nextElement(poly1);
+      nextElement(poly1);//moves to element that was the order of poly1
+
+      //while not at tail
+      //set coeffecient of poly1 to the addition of the two coeffecient in poly1 &poly2  
       while(setCoeffecient(poly1,getCoeffecient(poly1)+getCoeffecient(poly2))==ok){
-        nextElement(poly1);
-        nextElement(poly2);
+        nextElement(poly1); //move to next element in poly1
+        nextElement(poly2); //move to next element in poly2
       }
     }
 
   }
+
   llnode *delete;
-  while(poly1->structure->head->next->element->coeffecient==0){
+  //while element after head has coeffecient 0 and polynomial is not empty remove the element after head
+  while(poly1->structure->head->next != NULL){
+    if(poly1->structure->head->next->element->coeffecient == 0){
 	delete = poly1->structure->head->next;
 	poly1->structure->head->next= delete->next;
         free(delete);
+    }
+    else
+      break;
   }
   
-  return result; //returns value of poly after multiplication
+  return result; //returns resulting error value
 }
-//Copy input poly to result may need to change this to do a malloc
-// result->current = result->head->next; //Set current node to first node
-/*
-//Check if input llist is empty
-if (polyn->head->next == NULL){
-printf("Supplied polynomial is empty");
-return polyn;
-}
-else{
-llist *result = copyPoly(polyn); //Copy input poly to result may need to change this to do a malloc
-result->current = result->head->next; //Set current node to first node
-while (result->current != NULL){ //Stops when reaches tail
-//if coefficent value for current node is not 0
-//update coefficent value of current node to
-//be coeffecient * mult
-//sets current node to next node in list
-if (result->current->coeffecient!=0)
-{
-result->current->coeffecient=(result->current->coeffecient)*mult;
-result->current=result->current->next;
-}
-else //sets current node to next node in list
-result->current=result->current->next;
-}
-*/
+

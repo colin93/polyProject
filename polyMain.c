@@ -11,7 +11,7 @@ int main(){
   insertElement (6,3.2,poly1);
   insertElement (4,-1.5,poly1);
   insertElement (3,6.0,poly1);
-  insertElement (0,-2.0,poly1);
+  insertElement (0,-3.0,poly1);
   printf("\nAttempt to input negative power\n");
   insertElement(-1,2.0,poly1);
   printf("\npoly1 has order %d\n",polyOrder(poly1));
@@ -19,10 +19,10 @@ int main(){
 
   printf("\nCreating poly2:\n");
   polynomial *poly2 = createPoly();
-  insertElement (8,2.0,poly2);
-  insertElement (4,2.67,poly2);
-  insertElement (3,-1.6,poly2);
-  insertElement (2,1.67,poly2);
+  insertElement (8,-3.2,poly2);
+  insertElement (4,1,poly2);
+  insertElement (3,-2.0,poly2);
+  insertElement (0,1.67,poly2);
   fillPoly(poly2);
 	
   printf("\n\nValue of poly1 is:\n");

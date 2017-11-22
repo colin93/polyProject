@@ -1,5 +1,5 @@
 objects := polycreadel.o addPoly.o subPoly.o polyMultDivNorm.o fillPoly.o printPoly.o polyOrder.o insertElement.o polyPointers.o polyMain.o
-exec := $(objects) polyProgram
+exec := $(objects) polyProgram runProgram
 
 all: $(exec)
 
@@ -36,7 +36,10 @@ polyMain.o: polyMain.c poly.h
 polyProgram: $(objects)
 	gcc -o polyProgram $(objects)
 
+runProgram: polyProgram
+	./polyProgram
+
 clean:
-	rm $(exec)
+	rm $(exec) *.o *#
 
 

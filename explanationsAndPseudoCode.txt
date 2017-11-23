@@ -1,24 +1,26 @@
 data type: 
-  linked list: stores a pointer to current element in list and a pointer to head of list.
+  polynomial: contains a structure for a linked list
+  linked list: stores a pointer to current llnode in list and a pointer to head of list.
+  llnode: contains a polyElement structure and a pointer to next llnode in list
   polyElement: stores value of coeffecient and power of element and points to next element in polynomial
 
   createPoly: input: none
               output: Polynomial of order ax^n where a is an element of the real numbers and n is an element of the natural numbers.
-         Pseudo Code:
-	    Create new polynomial and allocate memory for it
-	    if memory is allocated
-	      create and allocate memory for structure (llist) of polynomial
-	      if memory is allocated
-	      	 create and allocate memory for head of polynomial
-		 set next pointer of head to null and current of polynomial to head
-	      else
-		 delete structure
-		 delete polynomial
-		 set polynomial to null
-	    else
-	      delete polynomial
-	      set polynomial to null
-	    return polynomial
+              Pseudo Code:
+	    	Create new polynomial and allocate memory for it
+	    	if memory is allocated
+	      	  create and allocate memory for structure (llist) of polynomial
+	      	  if memory is allocated
+	      	    create and allocate memory for head of polynomial
+		    set next pointer of head to null and current of polynomial to head
+	          else
+		    delete structure
+		    delete polynomial
+		    set polynomial to null
+	        else
+	          delete polynomial
+	          set polynomial to null
+	      return polynomial
 
 
   deletePoly: input: polynomial.

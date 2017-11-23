@@ -64,7 +64,7 @@ int main(){
   polyMultiply(poly1,5.0);
   printPoly(poly1);
 	
-  printf("\n\nAttempt to divide by 0");
+  printf("\n\nAttempt to divide by 0\n");
   //test 2 try to divide by 0
   if(polyDivide(poly1,0)==ok)
     printf("Test failed\n");

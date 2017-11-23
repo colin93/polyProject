@@ -205,8 +205,6 @@ output: eleError
 	    for value of current power -1 down to and including 0
 	      insert element with power current power-1 and coeffecient 0 and set output to its result
 
-
-
 getPower : input: polynomial
 	   output: n, n an integer
 

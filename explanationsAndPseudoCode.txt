@@ -199,15 +199,12 @@ output: eleError
 	  go to first element
  	  while not at last element
 	    for value of current power -1 down to value of next power
-	      insert element with power current power-1 and coeffecient 0
-	      if insufficent memory set output to noMemory
-	      move to inserted element
+	      insert element with power current power-1 and coeffecient 0 and set output to its result
 	    move to next already created element
 	  if power of current element is not 0
 	    for value of current power -1 down to and including 0
-	      insert element with power current power-1 and coeffecient 0
-	      if insufficeient memory set output to noMemory
-	      move to inserted element
+	      insert element with power current power-1 and coeffecient 0 and set output to its result
+
 
 
 getPower : input: polynomial

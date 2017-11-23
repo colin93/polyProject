@@ -25,7 +25,6 @@ eleError fillPoly (polynomial *poly){
       //fills in values down to and including x^0 with coeffecient 0
       result=insertElement(i,0,poly);
     }
-    nextElement(poly); //moves to tail
       
   }
   return result; //return relevant error message

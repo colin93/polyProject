@@ -6,13 +6,11 @@
 
 
 inputError polyMultiply(polynomial *polyIn,double mult)
-{
-  inputError result = ok;
-  
+{ 
   //Check if input llist is empty
   if (polyIn->structure->head->next == NULL){
     printf("Supplied polynomial is empty\n");
-    result = NullPoly;
+    return NullPoly;
   }
   else{
 
@@ -38,26 +36,22 @@ inputError polyMultiply(polynomial *polyIn,double mult)
       else //sets current pointer to next element in polynomial
 	nextElement(polyIn);
     }
-    
+    return ok;
   }
-  return result;
 }
 
 inputError polyDivide(polynomial *polyIn,double divide)
 {
-  inputError result = ok;
-
   //stop divide by 0
   if(divide!=0)
     {
       double inv = 1.0/divide; //invert input
-      result = polyMultiply(polyIn,inv); //perform multiply with inverse of input
+      return polyMultiply(polyIn,inv); //perform multiply with inverse of input
     }
   else
     {
-      result= zeroInput;
+      return zeroInput;
     }
-  return result;
 }
 
 inputError polyNormalise(polynomial *polyIn)
@@ -67,6 +61,5 @@ inputError polyNormalise(polynomial *polyIn)
   nextElement(polyIn);
   
   //perform division with coeffecient of that element
-  inputError result = polyDivide(polyIn,getCoeffecient(polyIn));
-  return result;
+  return polyDivide(polyIn,getCoeffecient(polyIn));
 }

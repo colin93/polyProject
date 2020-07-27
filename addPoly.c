@@ -5,11 +5,10 @@
 
 inputError polyAdd(polynomial *poly1,polynomial*poly2)
 {
-  inputError result = ok;//This is creating Polynominal
 
   //Check if both polynomials are NULL
   if (poly1->structure->head->next == NULL && poly2->structure->head->next == NULL){
-    result = NullPoly; //set result to show that supplied polys are null
+    return NullPoly; //set result to show that supplied polys are null
   }
   else{
     int polyPowers1 = polyOrder(poly1); //get highest power of poly1
@@ -61,6 +60,6 @@ inputError polyAdd(polynomial *poly1,polynomial*poly2)
       break;
   }
   
-  return result; //returns resulting error value
+  return ok; //returns resulting error value
 }
 

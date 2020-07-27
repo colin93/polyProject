@@ -9,11 +9,10 @@
 
 inputError polySub(polynomial *poly1,polynomial*poly2)
 {
-  inputError result = ok;//error message for returning
-
+	
   //Check if both input polys are empty
   if (poly1->structure->head->next == NULL && poly2->structure->head->next == NULL){
-    result = NullPoly; //set error message to show both inputs is null
+    return NullPoly; //set error message to show both inputs is null
   }
 
   else{
@@ -67,5 +66,5 @@ inputError polySub(polynomial *poly1,polynomial*poly2)
       break;
   }
 
-  return result; //returns value of poly after multiplication
+  return ok; //returns value of poly after multiplication
 }

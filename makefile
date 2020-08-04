@@ -40,6 +40,6 @@ runProgram: polyProgram
 	./polyProgram
 
 clean:
-	rm $(exec) *.o *#
+	rm polyProgram *# $(objects)
 
 
